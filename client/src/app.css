@@ -1,0 +1,30 @@
+:root {
+  font-family: 'Roboto', sans-serif;
+  --color-botticelli: #c6e0e7;
+  --color-tree-poppy: #ffa41d;
+  --color-malibu: #57abf9;
+  --color-sweet-corn: #f8ea8c;
+  --color-water-leaf: #a4e8e0;
+  --color-viking: #4cd7d0;
+  --color-anzac: #e1c340;
+  --color-gray: rgba(0, 0, 0, 0.3);
+  --color-rice-flower: rgb(238, 255, 222);
+  --color-electric-violet: #6e1df4;
+}
+
+html,
+body {
+  font-size: 62.5%;
+  padding: 0;
+  margin: 0;
+
+  /* 62.5% = 10px */
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

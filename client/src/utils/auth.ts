@@ -6,9 +6,6 @@ import { auth, database } from '~src/lib/firebase';
 export async function signInWithGoogle() {
   try {
     const res = await signInWithPopup(auth, new GoogleAuthProvider());
-    console.log(res);
-
-    window.location.href = '/';
   } catch (error) {
     console.log(error);
   }

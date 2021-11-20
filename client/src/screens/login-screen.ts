@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { html, css, LitElement, unsafeCSS } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, state } from 'lit/decorators.js';
 import { auth } from '~src/lib/firebase';
 
 const BACKGROUND_URL =
@@ -24,13 +24,6 @@ export default class ChatLoginScreen extends LitElement {
       }
     `
   ];
-  override firstUpdated() {
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        window.location.href = '/';
-      }
-    });
-  }
   override render() {
     return html` <chat-login> </chat-login> `;
   }

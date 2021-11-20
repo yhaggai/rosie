@@ -1,11 +1,10 @@
-import { onAuthStateChanged } from 'firebase/auth';
 import { html, LitElement } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import '~src/components/chat_header/index';
 import '~src/components/chat_input';
 import '~src/components/chat_messages';
 import { ChatMessage, UserTyping } from '~src/types';
-import { auth, listenToRegisteredUsers } from '~src/utils/auth';
+import { listenToRegisteredUsers } from '~src/utils/auth';
 import { listenToIncomingMessages, listenToUserTyping } from '~src/utils/chat';
 import chatStyle from './chat_style';
 
@@ -41,16 +40,8 @@ export default class ChatApp extends LitElement {
       this._subHedaer = groupDetails(this._registeredUsers as number);
     }, 3000);
   }
-  override firstUpdated() {
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        window.location.href = '/login';
-      }
-    });
-  }
 
   override render() {
-    console.log('calling', this._messages);
     return html`
       <chat-header headerTitle="Rose Kindergarden" subHeader=${this._subHedaer}></chat-header>
       <chat-messages .messages=${this._messages}></chat-messages>

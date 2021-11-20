@@ -23,10 +23,11 @@ export default class ChatMessages extends LitElement {
     css`
       :host {
         position: relative;
-        height: 100%;
+        height: 98%;
         display: flex;
         flex-direction: column;
         padding: 0 1rem 0 3rem;
+        margin-bottom: 1rem;
       }
       chat-message {
         margin-top: 3rem;

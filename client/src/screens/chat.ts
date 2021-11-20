@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import { customElement, query, state } from 'lit/decorators.js';
 import '~src/components/chat_header/index';
 import '~src/components/chat_input';
 import '~src/components/chat_messages';
@@ -13,9 +13,10 @@ const typingMessage = (name: string) => `${name} is typing`;
 
 @customElement('chat-app')
 export default class ChatApp extends LitElement {
+  @query('chat-messages', true) _messagesElem!: HTMLDivElement;
   constructor() {
     super();
-    listenToIncomingMessages(this.getMessage.bind(this));
+    listenToIncomingMessages(this.onMessageRecieved.bind(this));
     listenToRegisteredUsers(this.fetchRegisteredUsers.bind(this));
     listenToUserTyping(this.dispatchTypingEvent.bind(this));
   }
@@ -26,7 +27,8 @@ export default class ChatApp extends LitElement {
   private _registeredUsers: number | null = null;
   @state()
   private _messages: ChatMessage[] = [];
-  public getMessage(messages: [ChatMessage]) {
+  public onMessageRecieved(messages: [ChatMessage]) {
+    window.scrollTo(0, this._messagesElem.scrollHeight);
     this._messages = messages;
   }
   public fetchRegisteredUsers(registeredUsers: number) {

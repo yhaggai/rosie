@@ -20,6 +20,7 @@
     "@material/mwc-textfield": "^0.25.3",
     "classnames": "^2.3.1",
     "firebase": "^9.4.1",
-    "lit": "^2.0.2"
+    "lit": "^2.0.2",
+    "pwa-helper-components": "^0.2.10"
   }
 }

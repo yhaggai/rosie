@@ -4,6 +4,7 @@ export type ChatMessage = {
   displayName: string;
   profilePictureUrl: string;
   userUID: string;
+  questionMessage?: ChatMessage;
 };
 
 export type UserTyping = {

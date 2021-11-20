@@ -1,7 +1,4 @@
-import { css, unsafeCSS } from 'lit';
-
-const BACKGROUND_URL =
-  'https://res.cloudinary.com/dicgafcrn/image/upload/c_scale,w_1126/v1637425555/wallpaper.jpg';
+import { css } from 'lit';
 
 const chatStyle = css`
   :host {
@@ -30,8 +27,6 @@ const chatStyle = css`
     grid-column: 1;
     grid-row-start: 2;
     grid-row-end: 4;
-    background-image: url(${unsafeCSS(BACKGROUND_URL)});
-    background-size: 100%;
   }
 `;
 export default chatStyle;

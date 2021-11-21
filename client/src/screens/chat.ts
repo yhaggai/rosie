@@ -5,7 +5,12 @@ import '~src/components/chat_input';
 import '~src/components/chat_messages';
 import { ChatMessage, UserTyping } from '~src/types';
 import { listenToRegisteredUsers } from '~src/utils/auth';
-import { listenToIncomingMessages, listenToUserTyping } from '~src/utils/chat';
+import {
+  listenToBotMessage,
+  listenToIncomingMessages,
+  listenToSelfMadeMessage,
+  listenToUserTyping
+} from '~src/utils/chat';
 import chatStyle from './chat_style';
 
 const groupDetails = (registeredUsers: number) => `${registeredUsers} members`;
@@ -19,6 +24,8 @@ export default class ChatApp extends LitElement {
     listenToIncomingMessages(this.onMessageRecieved.bind(this));
     listenToRegisteredUsers(this.fetchRegisteredUsers.bind(this));
     listenToUserTyping(this.dispatchTypingEvent.bind(this));
+    listenToBotMessage(this.playPingSound.bind(this));
+    listenToSelfMadeMessage(this.scrollToBottom.bind(this));
   }
   static override styles = [chatStyle];
   @state()
@@ -27,9 +34,12 @@ export default class ChatApp extends LitElement {
   private _registeredUsers: number | null = null;
   @state()
   private _messages: ChatMessage[] = [];
-  public onMessageRecieved(messages: [ChatMessage]) {
-    window.scrollTo(0, this._messagesElem.scrollHeight);
+  public async onMessageRecieved(messages: [ChatMessage]) {
     this._messages = messages;
+    await this.updateComplete;
+  }
+  public scrollToBottom() {
+    this._messagesElem.scrollTop = this._messagesElem.scrollHeight;
   }
   public fetchRegisteredUsers(registeredUsers: number) {
     this._registeredUsers = registeredUsers;
@@ -41,6 +51,9 @@ export default class ChatApp extends LitElement {
     setTimeout(() => {
       this._subHedaer = groupDetails(this._registeredUsers as number);
     }, 3000);
+  }
+  public playPingSound() {
+    new Audio('https://res.cloudinary.com/dicgafcrn/video/upload/v1637449941/ping.wav').play();
   }
 
   override render() {

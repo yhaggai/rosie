@@ -43,6 +43,6 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "src/sw.js"  ],
   "exclude": []
 }

@@ -10,6 +10,7 @@ export default class ChatInput extends LitElement {
   static override styles = [chatInputStyle];
   throttledSetUserTyping = throttle(setUserTyping, 3000);
   private async sendMesasge(message: string) {
+    this.textInputElem.value = '';
     addMesasge(message);
   }
   private onSendButtonPressed() {
@@ -20,7 +21,6 @@ export default class ChatInput extends LitElement {
     this.throttledSetUserTyping();
     if (event.key === 'Enter' && !!message) {
       this.sendMesasge(message);
-      this.textInputElem.value = '';
       return;
     }
   }

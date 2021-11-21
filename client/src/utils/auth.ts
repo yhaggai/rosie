@@ -18,7 +18,6 @@ export async function signOut() {
 export function listenToRegisteredUsers(callback: Function) {
   const usersRef = ref(database, 'users/registered');
   onValue(usersRef, (snapshot) => {
-    console.log('snapshot', snapshot);
     callback(snapshot.val() as Number);
   });
 }

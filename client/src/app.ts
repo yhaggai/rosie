@@ -6,8 +6,8 @@ import './screens/login-screen';
 import './screens/chat';
 import { auth } from './utils/auth';
 
-import 'pwa-helper-components/pwa-install-button.js';
-import 'pwa-helper-components/pwa-update-available.js';
+import 'pwa-helper-components/pwa-install-button';
+import 'pwa-helper-components/pwa-update-available';
 
 function renderApp() {
   return html`<chat-app></chat-app>`;
@@ -39,7 +39,9 @@ export class App extends LitElement {
 
   override render() {
     if (this._loading) {
-      return html`<div><mwc-circular-progress indeterminate></mwc-circular-progress></div>`;
+      return html`<div style="display:flex;align-items:center;justify-content:center; height:100vh">
+        <mwc-circular-progress indeterminate></mwc-circular-progress>
+      </div>`;
     }
     return html` <div id="app">${this._isAuthed ? renderApp() : renderLogin()}</div> `;
   }

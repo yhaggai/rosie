@@ -1,16 +1,26 @@
-const COLORS = ['--color-sweet-corn', '--color-water-leaf', '--color-viking', '--color-anzac'];
+import { ChatMessage } from '~src/types';
+
+const COLORS = [
+  '--color-sweet-corn',
+  '--color-electric-violet',
+  '--color-water-leaf',
+  '--color-viking'
+];
+const BOT_ID = '__bot__';
 
 function modulo(number: number, base: number) {
   return ((number % base) + base) % base;
 }
 
-function randomIntFromInterval(min = 0, max: number) {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
+function hashCode(str: string) {
+  return str.split('').reduce(function (acc, char: string) {
+    acc = (acc << 5) - acc + char.charCodeAt(0);
+    return acc & acc;
+  }, 0);
 }
 
-export function getColor() {
-  const x = COLORS[randomIntFromInterval(0, COLORS.length - 1)];
+export function getColor(str: string) {
+  const x = COLORS[modulo(hashCode(str), COLORS.length - 1)];
   return x;
 }
 
@@ -23,4 +33,8 @@ export function throttle(func: Function, timeFrame: number) {
       lastTime = now;
     }
   };
+}
+
+export function isMessageBot(message: ChatMessage) {
+  return message.userUID === BOT_ID;
 }

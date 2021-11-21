@@ -10,20 +10,21 @@ const BOT_IMAGE_URL =
 
 const BOT_ID = '__bot__';
 
-function createMessage(content: string) {
+function createMessage(answer: string, questionMessage: ChatMessage) {
   return {
-    content,
+    content: answer,
+    questionMessage,
     timestamp: Date.now(),
     displayName: 'Rose (bot)',
     profilePictureUrl: BOT_IMAGE_URL,
     userUID: BOT_ID
   };
 }
-function insertBotResponse(answer: string) {
+function insertBotResponse(answer: string, questionMessage: ChatMessage) {
   const db = admin.database();
   const timestamp = Date.now();
   const ref = db.ref(`chat/${timestamp}`);
-  return ref.set(createMessage(answer));
+  return ref.set(createMessage(answer, questionMessage));
 }
 
 function isMessageAQuestion(message: ChatMessage) {
@@ -38,7 +39,7 @@ async function checkBotForAnswer(message: ChatMessage) {
   if (!anwser) {
     return;
   }
-  await insertBotResponse(anwser);
+  await insertBotResponse(anwser.content, message);
 }
 
 export function indexMessageToElastic() {

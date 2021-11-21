@@ -20,12 +20,33 @@ export default class ChatLogin extends LitElement {
       }
       h1 {
         text-align: center;
+        font-size: 2.5rem;
+      }
+      .login-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+      img {
+        border-radius: 50%;
+        margin-right: 2rem;
+        width: 5rem;
+        height: 5rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       }
     `
   ];
   override render() {
     return html`
-      <h1>Welcome the Rose kindergarden app</h1>
+      <div class="login-title">
+        <img
+          src="http://res.cloudinary.com/dicgafcrn/image/upload/c_scale,w_100/v1637246398/bot.png"
+        />
+        <h1>Welcome to Rosie</h1>
+      </div>
+
       <mwc-button @click=${() => signInWithGoogle()} raised label="google signin"></mwc-button>
     `;
   }

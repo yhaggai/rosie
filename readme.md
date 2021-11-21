@@ -4,7 +4,7 @@
 
 [![N|Solid](http://res.cloudinary.com/dicgafcrn/image/upload/c_scale,w_100/v1637246398/bot.png)](http://res.cloudinary.com/dicgafcrn/image/upload/c_scale,w_100/v1637246398/bot.png)
 
-### [Website](rosie.vercel.app)
+### [Website](https://rosie.vercel.app)
 
 ## Installtion
 

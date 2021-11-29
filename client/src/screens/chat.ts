@@ -24,7 +24,6 @@ export default class ChatApp extends LitElement {
     listenToIncomingMessages(this.onMessageRecieved.bind(this));
     listenToRegisteredUsers(this.fetchRegisteredUsers.bind(this));
     listenToUserTyping(this.dispatchTypingEvent.bind(this));
-    listenToBotMessage(this.playPingSound.bind(this));
     listenToSelfMadeMessage(this.scrollToBottom.bind(this));
   }
   static override styles = [chatStyle];

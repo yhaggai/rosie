@@ -6,7 +6,7 @@ import { ChatMessage } from '../../../client/src/types';
 import { admin, functions } from './firebase';
 
 const BOT_IMAGE_URL =
-  'http://res.cloudinary.com/dicgafcrn/image/upload/c_scale,w_100/v1637246398/bot.png';
+  'https://res.cloudinary.com/dicgafcrn/image/upload/c_scale,w_100/v1637246398/bot.png';
 
 const BOT_ID = '__bot__';
 

@@ -30,7 +30,7 @@ export default class ChatHeader extends LitElement {
 
   override render() {
     return html` <header>
-      <img src=${GROUP_IMAGE} />
+      <img src=${GROUP_IMAGE} alt="logo" />
       ${headerDetailsTemplate({ title: this.headerTitle, subHeader: this.subHeader })}
 
       <div class="button" @click=${() => this.menu.show()}>${optionsIcon()}</div>

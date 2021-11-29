@@ -42,7 +42,7 @@ export default class ChatLogin extends LitElement {
     return html`
       <div class="login-title">
         <img
-          src="http://res.cloudinary.com/dicgafcrn/image/upload/c_scale,w_100/v1637246398/bot.png"
+          src="https://res.cloudinary.com/dicgafcrn/image/upload/c_scale,w_100/v1637246398/bot.png"
         />
         <h1>Welcome to Rosie</h1>
       </div>

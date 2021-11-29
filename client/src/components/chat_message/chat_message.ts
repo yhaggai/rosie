@@ -20,7 +20,7 @@ export default class ChatMessage extends LitElement {
   static override styles = chatMesageStyle;
   override render() {
     return html`
-      <img class="message__avatar" src=${this.profileImageUrl} />
+      <img class="message__avatar" src=${this.profileImageUrl} alt="avatar" />
       <div class="message__sender" style="color:var(${unsafeCSS(getColor(this.sender))})">
         ${this.sender}
       </div>
